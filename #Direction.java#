@@ -1,0 +1,21 @@
+
+public enum Direction {
+    NORTH,
+    NORTHEAST, 
+    EAST,
+    SOUTHEAST,
+    SOUTH,
+    SOUTHWEST,
+    WEST,
+    NORTHWEST
+}
+
+
+NORTH("north"),
+NORTHEAST("northeast"),
+EAST("east"),
+SOUTHEAST("southeast"),
+SOUTH("south"),
+SOUTHWEST("southwest"),
+WEST("west"),
+NORTHWEST("northwest"),
