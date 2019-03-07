@@ -49,8 +49,30 @@ class View extends JPanel{
     	// TODO: Change this method so you can load other orc animation bitmaps
     }
     
-    //View.update(model.getX(), model.getY(), model.getDirect());
-    public void update(int x, int y, int d){}
+    //View.update(model.getX(), model.getY(), model.getDirect()); basically 
+    public void update(int xloc, int yloc, int direction){
+    	if((xloc > frameWidth-imgWidth) | (xloc < 0) | (yloc > frameHeight-imgHeight) | (yloc < 0) ) {
+    		
+    		//finds random bounce direction within reasonable range
+    		direction = (direction + (int) (Math.random()*3 + 3) ) % directions.length; 		
+    		
+    		//to make sure there's no random stuck in corner glitching
+    		if(xloc > frameWidth-imgWidth) {
+    			xloc = frameWidth-imgWidth;
+    		}else if(xloc < 0) {
+    			xloc = 0;
+    		}   		
+    		if(yloc > frameHeight-imgHeight) {
+    			yloc = frameHeight-imgHeight;
+    		}else if(yloc < 0){
+    			yloc = 0;
+    		}
+    	}
+    		changeDirectionAttributes();
+    		picNum = (picNum + 1) % frameCount;
+    		g.drawImage(pics[direction][picNum], xloc+=xChange, yloc+=yChange, Color.gray, this);
+
+
+    }
 
 }
-
