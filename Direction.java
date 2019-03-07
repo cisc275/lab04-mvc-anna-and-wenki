@@ -12,6 +12,7 @@ public enum Direction {
 	NORTHWEST("northwest");
 	
 	private String name = null;
+	private int length = 8;
 	
 	private Direction(String s){
 		name = s;
@@ -20,5 +21,8 @@ public enum Direction {
 		return name;
 	}
 
+	public int length(){
+	    return length;
+	}
 
 }
