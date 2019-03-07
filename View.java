@@ -12,8 +12,10 @@ import java.util.*;
 
 class View extends JPanel{
 
-
-
+    final int frameWidth = 500;
+    final int frameHeight = 300;
+    final int imgWidth = 165;
+    final int imgHeight = 165;
 
     final int frameCount = 10;
     int picNum = 0;
@@ -26,6 +28,11 @@ class View extends JPanel{
     BufferedImage[] picsNWest;
     BufferedImage[] picsNEast;
 
+    //(view.getWidth(), view.getHeight()), view.getImageWidth(), view.getImageHeight());
+    public int getWidth(){return frameWidth;}
+    public int getHeight(){return frameHeight;}
+    public int getImageWidth(){return imageWidth;}
+    public int getImageHeight(){return imageHeight;}
 
     //Read image from file and return
     private BufferedImage createImage(String dir){
@@ -43,7 +50,7 @@ class View extends JPanel{
     }
     
     //View.update(model.getX(), model.getY(), model.getDirect());
-    
+    public void update(int x, int y, int d){}
 
 }
 
