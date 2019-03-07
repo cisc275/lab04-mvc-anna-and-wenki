@@ -42,8 +42,8 @@ class View extends JPanel{
     	// TODO: Change this method so you can load other orc animation bitmaps
     }
     
-    //View.update(model.getX(), model.getY(), model.getDirect());
-    
+    //View.update(model.getX(), model.getY(), model.getDirect()
+   
 
 }
 

@@ -8,3 +8,8 @@
  * provide direction
  * provide location
  **/
+
+import java.util.*;
+
+//model.updateLocationAndDirection();
+//model = new Model(view.getWidth(), view.getHeight()), view.getImageWidth(), view.getImageHeight());
