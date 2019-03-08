@@ -23,14 +23,20 @@ import javax.swing.JPanel;
 
 class View extends JPanel{
 
-    final int frameWidth = 500;
-    final int frameHeight = 300;
-    final int imgWidth = 165;
-    final int imgHeight = 165;
+    JFrame frame;
+    int frameWidth = 500;
+    int frameHeight = 300;
+    int imgWidth = 165;
+    int imgHeight = 165;
+
+    private int xloc = 0;
+    private int yloc = 0;
+    private Direction d;
 
     final int frameCount = 10;
     int picNum = 0;
 
+    BufferedImage[] pics;
     BufferedImage[] picsWest;
     BufferedImage[] picsEast;
     BufferedImage[] picsNorth;
@@ -49,9 +55,41 @@ class View extends JPanel{
     public int getImageHeight(){return imgHeight;}
 
 
-    View(){
-	this.buildFrame();
-	
+    public View() {
+	this.createImages();
+	this.createFrame();
+	pics = picsNWest;
+    }
+    
+    private void createFrame(){
+       
+	frame = new JFrame();
+    	frame.getContentPane().add(this);
+    	frame.setBackground(Color.gray);
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	
+    	Dimension windowSize = new Dimension(frameWidth, frameHeight);   	
+    	frame.setSize(windowSize);
+    	frame.setMinimumSize(windowSize);
+    	frame.setMaximumSize(windowSize);
+    	
+    	frame.setVisible(true);
+    
+    }
+    
+     private BufferedImage createImage(String d){
+    	BufferedImage bufferedImage;
+    	try {
+    		bufferedImage = ImageIO.read(new File("images/orc/orc_forward_" + d +".png"));
+    		return bufferedImage;
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
+	return null;
+       
+    }
+    private void createImages(){
+		
 	BufferedImage img = createImage("west"); //for west direction
     	picsWest = new BufferedImage[10];
     	for(int i = 0; i < frameCount; i++)
@@ -85,55 +123,31 @@ class View extends JPanel{
     	BufferedImage img7 = createImage("northwest"); //for north-west direction
     	picsNWest = new BufferedImage[10];
     	for(int i = 0; i < frameCount; i++)
-    		picsNWest[i] = img7.getSubimage(imgWidth*i, 0, imgWidth, imgHeight); 
-    }
-
-  
-        private BufferedImage createImage(String d){
-    	BufferedImage bufferedImage;
-    	try {
-    		bufferedImage = ImageIO.read(new File("images/orc/orc_forward_" + d +".png"));
-    		return bufferedImage;
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
-    	return null;
-       
+    		picsNWest[i] = img7.getSubimage(imgWidth*i, 0, imgWidth, imgHeight);
     }
 
 
-    private void buildFrame(){
-       
-	JFrame frame = new JFrame();
-    	frame.getContentPane().add(this);
-    	frame.setBackground(Color.gray);
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	
-    	Dimension windowSize = new Dimension(frameWidth, frameHeight);   	
-    	frame.setSize(windowSize);
-    	frame.setMinimumSize(windowSize);
-    	frame.setMaximumSize(windowSize);
-    	
-    	frame.setVisible(true);
-    	
-    	for(int i = 0; i < 1000; i++){
+
+    public void paint(Graphics g){
+	picNum = (picNum + 1) % frameCount;
+	g.drawImage(picsNorth[picNum], xloc, yloc, Color.gray, this); 
+    }
+   
+    
+    //View.update(model.getX(), model.getY(), model.getDirect()); basically 
+    public void update(int x, int y, Direction direction){
+
+	xloc = x;
+    	yloc = y;
+    	d = direction;
+
     		frame.repaint();
     		try {
     			Thread.sleep(100);
     		} catch (InterruptedException e) {
     			e.printStackTrace();
     		}
-    	}
-    }
-
-
-
-    
-    //View.update(model.getX(), model.getY(), model.getDirect()); basically 
-    public void update(int xloc, int yloc, int direction){
-
-   
-
+               	this.repaint();
 
     }
 
