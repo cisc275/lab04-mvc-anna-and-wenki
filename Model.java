@@ -16,7 +16,7 @@ class Model{
     //model.updateLocationAndDirection();
    
     
-    Direction d = Direction.SOUTHWEST;
+    Direction d = Direction.SOUTHEAST;
     
     final int frameWidth;
     final int frameHeight;
@@ -32,14 +32,15 @@ class Model{
 
 
 	//model = new Model(view.getWidth(), view.getHeight()), view.getImageWidth(), view.getImageHeight());
-    Model(int w, int h, int iw, int ih){
+    public Model(int w, int h, int iw, int ih){
 	frameWidth = w;
 	frameHeight = h;
 	imgWidth = iw;
 	imgHeight = ih;
     }
 
-    //model.getX(), model.getY(), model.getDirect());
+
+	//model.getX(), model.getY(), model.getDirect());
     public int getX(){
     	return xloc;
     	}
@@ -121,6 +122,12 @@ class Model{
     	if(d == Direction.SOUTHWEST) {
     		xloc -= xIncr;
     		yloc += yIncr;
+    	}
+    	if(d == Direction.EAST) {
+    		xloc += xIncr;
+    	}
+    	if(d == Direction.WEST) {
+    		xloc -= xIncr;
     	}
     }
    ///new

@@ -25,8 +25,8 @@ import javax.swing.JPanel;
 class View extends JPanel{
 
     JFrame frame;
-    int frameWidth = 500;
-    int frameHeight = 300;
+    static int frameWidth = 500;
+    static int frameHeight = 300;
     int imgWidth = 165;
     int imgHeight = 165;
 
@@ -59,8 +59,21 @@ class View extends JPanel{
     public View() {
 	this.createFrame();
 	this.createImages();
-	pics = picsNWest;
     }
+    
+    //View.update(model.getX(), model.getY(), model.getDirect()); basically 
+    public void update(int x, int y, Direction direction){
+    	xloc = x;
+    	yloc = y;
+    	d = direction;
+    	frame.repaint();
+    	try {
+    		Thread.sleep(100);
+    		} 
+    	catch (InterruptedException e) {
+    		e.printStackTrace();
+    		}
+    	}
     
     private void createFrame(){
        
@@ -68,14 +81,9 @@ class View extends JPanel{
     	frame.getContentPane().add(this);
     	frame.setBackground(Color.gray);
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	
-    	Dimension windowSize = new Dimension(frameWidth, frameHeight);   	
-    	frame.setSize(windowSize);
-    	frame.setMinimumSize(windowSize);
-    	frame.setMaximumSize(windowSize);
-    	
-    	frame.setVisible(true);
-    
+        frame.setSize(frameWidth, frameHeight);
+        frame.setVisible(true);
+
     }
     
      private BufferedImage createImage(String d){
@@ -125,6 +133,11 @@ class View extends JPanel{
     	picsNWest = new BufferedImage[10];
     	for(int i = 0; i < frameCount; i++)
     		picsNWest[i] = img7.getSubimage(imgWidth*i, 0, imgWidth, imgHeight);
+    	
+    	BufferedImage img8 = createImage("northeast"); //for north-west direction
+    	picsNEast = new BufferedImage[10];
+    	for(int i = 0; i < frameCount; i++)
+    		picsNEast[i] = img8.getSubimage(imgWidth*i, 0, imgWidth, imgHeight);
     }
 
 
@@ -161,17 +174,4 @@ class View extends JPanel{
     }
    
     
-    //View.update(model.getX(), model.getY(), model.getDirect()); basically 
-    public void update(int x, int y, Direction direction){
-    	xloc = x;
-    	yloc = y;
-    	d = direction;
-    	frame.repaint();
-    	try {
-    		Thread.sleep(100);
-    		} 
-    	catch (InterruptedException e) {
-    		e.printStackTrace();
-    		}
-    	}
-    }
+}
