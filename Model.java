@@ -9,13 +9,9 @@
  * provide location
  **/
 
-//import java.util.*;
-
 
 class Model{
-    //model.updateLocationAndDirection();
-   
-    
+
     Direction d = Direction.SOUTHEAST;
     
     final int frameWidth;
@@ -31,7 +27,6 @@ class Model{
     int yChange = yIncr;
 
 
-	//model = new Model(view.getWidth(), view.getHeight()), view.getImageWidth(), view.getImageHeight());
     public Model(int w, int h, int iw, int ih){
 	frameWidth = w;
 	frameHeight = h;
@@ -130,5 +125,5 @@ class Model{
     		xloc -= xIncr;
     	}
     }
-   ///new
+
 }

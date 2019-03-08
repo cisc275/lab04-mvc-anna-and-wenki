@@ -8,10 +8,8 @@
  * use proper images for direction
  * load images for all direction (an image should only be loaded once!!! why?)
  */
-//import java.io.*;
-//import java.util.*;
-//
-//import java.awt.Dimension;
+
+import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -26,6 +24,8 @@ import javax.swing.JPanel;
 class View extends JPanel{
 
     JFrame frame;
+    Dimension windowSize;
+    
     static int frameWidth = 500;
     static int frameHeight = 300;
     int imgWidth = 165;
@@ -64,9 +64,11 @@ class View extends JPanel{
     
     //View.update(model.getX(), model.getY(), model.getDirect()); basically 
     public void update(int x, int y, Direction direction){
+	frame.setSize(windowSize);
     	xloc = x;
     	yloc = y;
     	d = direction;
+	
     	frame.repaint();
     	try {
     		Thread.sleep(100);
@@ -84,6 +86,11 @@ class View extends JPanel{
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(frameWidth, frameHeight);
         frame.setVisible(true);
+	
+    	windowSize  = new Dimension(frameWidth, frameHeight);   	
+    	frame.setSize(windowSize);
+    	frame.setMinimumSize(windowSize);
+    	frame.setMaximumSize(windowSize);
 
     }
     
@@ -145,9 +152,7 @@ class View extends JPanel{
 
     public void paint(Graphics g){
 	picNum = (picNum + 1) % frameCount;
-//	if(d == Direction.NORTH) {
-//	g.drawImage(picsNorth[picNum], xloc, yloc, Color.gray, this); 
-//	}
+
 	if (d == Direction.EAST) { //draw east
     	g.drawImage(picsEast[picNum], xloc, yloc, Color.gray, this);
 	}
