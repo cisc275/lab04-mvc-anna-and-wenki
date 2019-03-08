@@ -8,10 +8,10 @@
  * use proper images for direction
  * load images for all direction (an image should only be loaded once!!! why?)
  */
-import java.io.*;
-import java.util.*;
-
-import java.awt.Dimension;
+//import java.io.*;
+//import java.util.*;
+//
+//import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
+@SuppressWarnings("serial")
 class View extends JPanel{
 
     JFrame frame;
@@ -77,7 +78,7 @@ class View extends JPanel{
     
     private void createFrame(){
        
-	frame = new JFrame();
+    	frame = new JFrame();
     	frame.getContentPane().add(this);
     	frame.setBackground(Color.gray);
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
