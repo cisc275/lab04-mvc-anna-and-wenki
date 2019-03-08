@@ -13,7 +13,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
-
+//ss
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;

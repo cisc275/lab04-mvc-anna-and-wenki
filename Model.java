@@ -22,7 +22,7 @@ class Model{
     final int frameHeight;
     final int imgWidth;
     final int imgHeight ;
-    
+    //ss
     int xloc = 0;
     int yloc = 0;
     final int xIncr = 8; //used as speed basically
