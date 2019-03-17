@@ -96,34 +96,40 @@ class Model{
     			d = Direction.NORTHWEST; //change to north east
     		}
     	}
-    	if(d == Direction.NORTH) {
-    		yloc -= yIncr;
-    	}
-    	if(d == Direction.SOUTH) {
-    		yloc += yIncr;
-    	}
-    	if(d == Direction.NORTHEAST) {
-    		xloc += xIncr;
-    		yloc -= yIncr;
-    	}
-    	if(d == Direction.NORTHWEST) {
-    		xloc -= xIncr;
-    		yloc -= yIncr;
-    	}
-    	if(d == Direction.SOUTHEAST) {
-    		xloc += xIncr;
-    		yloc += yIncr;
-    	}
-    	if(d == Direction.SOUTHWEST) {
-    		xloc -= xIncr;
-    		yloc += yIncr;
-    	}
-    	if(d == Direction.EAST) {
-    		xloc += xIncr;
-    	}
-    	if(d == Direction.WEST) {
-    		xloc -= xIncr;
-    	}
+
+
+	
+	switch(d){
+	case NORTH:
+	    yloc -= yIncr;
+	    break;
+	case SOUTH:
+	    yloc += yIncr;
+	    break;
+	case NORTHEAST:
+	    xloc += xIncr;
+	    yloc -= yIncr;
+	    break;
+        case NORTHWEST:
+	    xloc -= xIncr;
+	    yloc -= yIncr;
+	    break;
+	case SOUTHEAST:
+	    xloc += xIncr;
+	    yloc += yIncr;
+	    break;
+	case SOUTHWEST:
+	    xloc -= xIncr;
+	    yloc += yIncr;
+	    break;
+	case EAST:
+	    xloc += xIncr;
+	    break;
+	case WEST:
+	    xloc -= xIncr;
+	    break;
+	}
+
     }
 
 }
